@@ -11,11 +11,12 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Extract JARVIS ZIP
+      - name: Extract FIXED JARVIS project
         run: |
-          unzip -o JARVIS_GitHub_Ready.zip -d jarvis
-          cp -r jarvis/* .
-          cp -r jarvis/.[!.]* . 2>/dev/null || true
+          rm -rf app build.gradle.kts settings.gradle.kts gradle.properties
+          rm -rf README.md BUILD_ON_PHONE.md
+          unzip -o JARVIS_GitHub_Ready_FIXED.zip -d jarvis
+          cp -a jarvis/. .
 
       - name: Setup Java
         uses: actions/setup-java@v4
